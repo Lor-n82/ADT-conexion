@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.4.3.final using JasperReports Library version 6.4.3  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Blank_A4_Landscape" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="30ef5133-5f17-4f92-a417-a45d332102f8">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="DataAdapter.xml"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<queryString>
+		<![CDATA[select  dept_no, dnombre, loc, count(emp_no) as cuenta,
+round(avg(coalesce(salario,0)),2) as media,
+sum(coalesce(salario,0)) as suma
+from departamentos left join empleados using (dept_no)
+group by dept_no,dnombre,loc]]>
+	</queryString>
+	<field name="dept_no" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="dept_no"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="departamentos"/>
+	</field>
+	<field name="dnombre" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="dnombre"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="departamentos"/>
+	</field>
+	<field name="loc" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="loc"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="departamentos"/>
+	</field>
+	<field name="cuenta" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.label" value="cuenta"/>
+	</field>
+	<field name="media" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.label" value="media"/>
+	</field>
+	<field name="suma" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.label" value="suma"/>
+	</field>
+	<variable name="dept_no1" class="java.lang.Integer" resetType="Column" calculation="Count">
+		<variableExpression><![CDATA[$F{dept_no}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="64" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="100" height="30" uuid="4e97ce99-460f-4ca1-8e8c-42ff15e7dacb">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="ddb7794f-7df1-482a-bc7e-a1b401b51d70"/>
+				</reportElement>
+				<text><![CDATA[Codigo departamento]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="130" y="0" width="100" height="30" uuid="dbca4000-0caf-446e-af87-cac088002a74">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="305ff227-0fe5-4b91-84b3-48f54b078b6d"/>
+				</reportElement>
+				<text><![CDATA[Nombre departamento]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="260" y="0" width="100" height="30" uuid="6880657b-6282-4848-8de7-d51c66480235">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="ae408ee9-38f1-4559-84c3-4034612dd4ea"/>
+				</reportElement>
+				<text><![CDATA[Localidad departamento]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="390" y="0" width="100" height="30" uuid="3fdec0ce-6ff3-40d7-a4bf-4c04b250aa45">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="94e4f75b-4c7e-418b-bed4-1b5df87bb816"/>
+				</reportElement>
+				<text><![CDATA[Numero empleados]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="520" y="0" width="100" height="30" uuid="68fbc061-b79f-4638-afb5-751fbb20158e">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="4b85b50f-046c-4b41-8cfd-d777be1f6625"/>
+				</reportElement>
+				<text><![CDATA[Media salario]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="650" y="0" width="100" height="30" uuid="61c64e02-1566-494b-8d5e-fcbe28cb3d5a">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="44ea2912-7ca9-4ad1-b602-8c4ef205572e"/>
+				</reportElement>
+				<text><![CDATA[Suma salarios]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="44" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="100" height="30" uuid="2bf97064-16eb-4b42-a2e2-70bd9509b49a">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="ddb7794f-7df1-482a-bc7e-a1b401b51d70"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{dept_no}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="130" y="0" width="100" height="30" uuid="bfc3852e-6bb9-4a37-9926-578790aa68bf">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="305ff227-0fe5-4b91-84b3-48f54b078b6d"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{dnombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="260" y="0" width="100" height="30" uuid="5ded312f-84d2-472d-a4b9-0c950242d4e9">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="ae408ee9-38f1-4559-84c3-4034612dd4ea"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{loc}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="390" y="0" width="100" height="30" uuid="a8aea37a-7579-4284-9a0a-f3561d28afb2">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="94e4f75b-4c7e-418b-bed4-1b5df87bb816"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{cuenta}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="520" y="0" width="100" height="30" uuid="26c8b21e-344c-4446-9a40-2610a751c192">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="4b85b50f-046c-4b41-8cfd-d777be1f6625"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{media}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="650" y="0" width="100" height="30" uuid="3a003a67-e01c-4309-a5ef-4779d042e19d">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="44ea2912-7ca9-4ad1-b602-8c4ef205572e"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{suma}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="62" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="100" height="30" uuid="90c2196b-2b55-4d3c-b1ce-7ae0b1493587"/>
+				<text><![CDATA[Total Registros:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="70" y="0" width="100" height="30" uuid="3bf6c4c8-77c2-436a-bce1-3afdea3b2f74"/>
+				<textFieldExpression><![CDATA[$V{dept_no1}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="31" splitType="Stretch">
+			<textField pattern="MMMMM dd, yyyy">
+				<reportElement x="0" y="0" width="100" height="30" uuid="c4d913f7-4cc6-4f8f-9cd0-00caf65ed833"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="480" y="0" width="100" height="30" uuid="d6e22691-13d9-4e79-ae80-e0c9b551aeab"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="580" y="0" width="100" height="30" uuid="2351cff2-45b3-4bf4-b6a6-4c5ad118ea9b"/>
+				<textElement textAlignment="Left"/>
+				<textFieldExpression><![CDATA[" of " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
